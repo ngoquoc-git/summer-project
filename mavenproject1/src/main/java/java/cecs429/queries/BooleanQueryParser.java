@@ -161,15 +161,13 @@ public class BooleanQueryParser {
 
 				//split up the terms within the phrase
 				String[] splitPhrase = subquery.substring(startIndex, startIndex + lengthOut).split(" ");
-				List<QueryComponent> phraseTerms = new ArrayList<>();
+				List<QueryComponent> terms = new ArrayList<>();
 				for (int i = 0; i < splitPhrase.length; i++) {
-					phraseTerms.add(new TermLiteral(splitPhrase[i]));
+					terms.add(new TermLiteral(splitPhrase[i]));
 				}
 
 				// This is a phrase literal containing multiple terms.
-				return new Literal(
-						new StringBounds(startIndex, lengthOut),
-						new PhraseLiteral(phraseTerms));
+				return new Literal(new StringBounds(startIndex, lengthOut), new PhraseLiteral(terms));
 
 			}
 

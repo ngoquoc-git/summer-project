@@ -5,33 +5,19 @@ import java.cecs429.indexes.Posting;
 
 import java.util.ArrayList;
 import java.util.List;
-//import cecs429.queries.QueryComponent;
 
 /**
  * Represents a phrase literal consisting of one or more terms that must occur in sequence.
  */
 public class PhraseLiteral implements QueryComponent {
 	// The list of individual terms in the phrase. Changed to Query
-	//private List<String> mTerms = new ArrayList<>();
 	private List<QueryComponent> mTerms = new ArrayList<>();
 	/**
 	 * Constructs a PhraseLiteral with the given individual phrase terms.
 	 */
-	//public PhraseLiteral(List<String> terms)
 	public PhraseLiteral(List<QueryComponent> terms) {
 		mTerms.addAll(terms);
-		//for(QueryComponent q:terms){ //Look through terms and add to children list (mterms)
-			//mTerms.add(q);}
-		//mTerms.addAll(terms);
 	}
-	
-	/**
-	 * Constructs a PhraseLiteral given a string with one or more individual terms separated by spaces.
-	 /
-	public PhraseLiteral(String terms) {
-		mTerms.addAll(Arrays.asList(terms.split(" ")));
-	}
-	*/
 	
 	@Override
 	public List<Posting> getPostings(Index index) {
@@ -41,8 +27,7 @@ public class PhraseLiteral implements QueryComponent {
 	@Override
 	public List<Posting> getPostingsPositions(Index index) {
 		List<Posting> result = new ArrayList<>();
-		// Done: program this method. Retrieve the postings for the individual terms in the phrase,
-		// and positional merge them together.
+		
 		int distance = 1;//maintain the distance required between phrases
 
 		if (mTerms.size() < 2) {//one child denotes a term literal
