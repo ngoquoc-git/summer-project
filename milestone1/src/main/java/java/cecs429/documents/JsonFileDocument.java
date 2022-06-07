@@ -2,7 +2,6 @@ package java.cecs429.documents;
 
 import com.google.gson.*;
 import java.cecs429.documents.FileDocument;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
