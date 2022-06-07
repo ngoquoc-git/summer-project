@@ -21,7 +21,9 @@ public class PhraseLiteral implements QueryComponent {
 	
 	@Override
 	public List<Posting> getPostings(Index index) {
-            return getPostingsPositions(index);
+            List<Posting> result = new ArrayList<>();
+            
+            return result;
 	}
 
 	
