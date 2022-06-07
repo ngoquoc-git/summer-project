@@ -1,4 +1,4 @@
-package java.cecs429.documents;
+package cecs429.documents;
 
 import com.google.gson.*;
 import java.cecs429.documents.FileDocument;
@@ -18,7 +18,7 @@ public class JsonFileDocument implements FileDocument{
             this.path = path;
 	}
         
-        @Override
+
 	public int getId() {
             return this.docID;
 	}
@@ -36,7 +36,7 @@ public class JsonFileDocument implements FileDocument{
             this.title = title;
         }
 
-	@Override
+
 	public Reader getContent() {
 		Reader reader;
 		Reader Sreader;
@@ -52,7 +52,7 @@ public class JsonFileDocument implements FileDocument{
 		return null;
 	}
 
-	@Override
+
 	public String getTitle() {
 		Reader reader;
 		try {
