@@ -14,21 +14,30 @@ public class Posting { //Posting consists of document if with a list of position
 		mDocumentId = documentId;
 		mPositions = position;
 	}
+        
 	public Posting(int documentId) {
 
 		mDocumentId = documentId;
 		mPositions = new ArrayList<>();
 	}
+        
+        public Posting(int docID, int pos) {
+            mDocumentId = docID;
+            mPositions = new ArrayList<>();
+            mPositions.add(pos);
+        }
+        
 	public int getDocumentId() {
 		return mDocumentId;
-	}
-	public ArrayList<Integer> getPostions(){ //return positions of Posting
+        }
+        
+	public ArrayList<Integer> getPositions(){
 		return mPositions;
 	}
-	public void addPosition(int position){ //add a position to positions to the posting, sort
-		//if(!mPositions.contains(position)){//if position doesnt already exist
-			mPositions.add(position);
-			Collections.sort(mPositions);
-			//}
+        
+	public void addPosition(int position){ 
+            mPositions.add(position);
+            Collections.sort(mPositions);
+			
 	}
 }

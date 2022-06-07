@@ -5,6 +5,15 @@
 
 package com.mycompany.milestone1;
 
+import java.cecs429.documents.*;
+import java.cecs429.queries.*;
+import java.cecs429.indexes.*;
+import java.cecs429.text.*;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author holyshjt
@@ -12,6 +21,16 @@ package com.mycompany.milestone1;
 public class Milestone1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       
+        Scanner scan = new Scanner(System.in);
+        String dir;
+                
+        System.out.print("Enter something to search: ");
+        dir = scan.nextLine();
+        
+        DocumentCorpus corpus = DirectoryCorpus.loadJsonDirectory(Paths.get(dir), ".json");
+        TokenProcessor = new AdvancedTokenProcessor();
+        
+        
     }
 }

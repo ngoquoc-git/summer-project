@@ -2,158 +2,126 @@ package java.cecs429.queries;
 
 import java.cecs429.indexes.Index;
 import java.cecs429.indexes.Posting;
+import java.cecs429.text.AdvancedTokenProcessor;
+import java.cecs429.text.TokenProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.management.Query;
 
-/**
- * Represents a phrase literal consisting of one or more terms that must occur in sequence.
- */
 public class PhraseLiteral implements QueryComponent {
-	// The list of individual terms in the phrase. Changed to Query
-	private List<QueryComponent> mTerms = new ArrayList<>();
-	/**
-	 * Constructs a PhraseLiteral with the given individual phrase terms.
-	 */
-	public PhraseLiteral(List<QueryComponent> terms) {
-		mTerms.addAll(terms);
-	}
-	
-	@Override  
-	public List<Posting> getPostings(Index index) {
-            List<Posting> result = new ArrayList<>();
-            
-            return result;
-	}
+
+    private List<String> mTerms = new ArrayList<>();
+    private int k;
+
+    public PhraseLiteral(List<String> terms) {
+            mTerms.addAll(terms);
+    }
+
+    @Override  
+    public List<Posting> getPostings(Index index) {
+        TokenProcessor tokenProcessor = new AdvancedTokenProcessor();
+        List<String> querry = new ArrayList<>();
+
+        for(String item: mTerms) {
+                querry.add(tokenProcessor.processToken(item).get(0));
+        }
+
+        List<Posting> result = new ArrayList<>();
+        List<Posting> p1 = new ArrayList<>();
+        List<Posting> p2 = new ArrayList<>();
+        int loop = querry.size() - 1;
+        int count = 1;
+        Boolean check = true;
+
+        if(querry.size() == 1) result = index.getPostingsPositions(querry.get(0));
+
+        while(loop > 0) {
+                p1 = index.getPostingsPositions(querry.get(count - 1));
+                p1 = index.getPostingsPositions(querry.get(count));
+
+                if (!check) {
+                        result = merge(result, p2, result.size(), p2.size(), k);
+                } 
+                else {
+                        result = merge(p1, p2, p1.size(), p2.size(), k);
+                        check = false;
+                }
+                count++;
+                loop--;
+        }
+        return result;
+    }
         
-//	public List<Posting> getPostingsPositions(Index index) {
-//		List<Posting> result = new ArrayList<>();
-//		
-//		int distance = 1;//maintain the distance required between phrases
-//
-//		if (mTerms.size() < 2) {//one child denotes a term literal
-//			if (mTerms.get(0) != null) {
-//				result = mTerms.get(0).getPostingsPositions(index);
-//			}
-//		} else  {//multiple terms to merge
-//
-//			//verify that both terms appear at least in one document
-//			if (mTerms.get(0).getPostingsPositions(index) != null &&
-//				mTerms.get(1).getPostingsPositions(index) != null) {
-//
-//				//merge the first 2 terms postings together
-//				result = andMergePosting(mTerms.get(0).getPostingsPositions(index),
-//						mTerms.get(1).getPostingsPositions(index), distance);
-//
-//			}
-//
-//			//if there are more terms in the phrase, iterate through the rest of the term postings
-//			for (int i = 2; i < mTerms.size(); i++) {
-//
-//				distance++;//increase the distance between terms
-//				//verify the next posting appears in at least 1 document
-//				if (mTerms.get(i).getPostingsPositions(index) != null) {
-//					//merge previous result postings with new term postings
-//					result = andMergePosting(result, mTerms.get(i).getPostingsPositions(index), distance);
-//				}
-//
-//			}
-//
-//		}
-//
-//		return result;
-////	}
-//
-//	/**
-//	 * merge two postings lists together based on the ANDing the document id's, and that the first term is some
-//	 * distance before the second term
-//	 * @param firstPostings first list of postings
-//	 * @param secondPostings second list of postings
-//	 * @param distance positional space between the two terms
-//	 * @return merged list of postings after ANDing the two postings together
-//	 */
-//	private List<Posting> andMergePosting(List<Posting> firstPostings, List<Posting> secondPostings, int distance) {
-//
-//		List<Posting> result = new ArrayList<Posting>();
-//
-//		//starting indices for both postings lists
-//		int i = 0;
-//		int j = 0;
-//
-//		//iterate through both postings lists, end when one list has no more elements
-//		while (i < firstPostings.size() && j < secondPostings.size()) {
-//
-//			//both lists have this document
-//			if (firstPostings.get(i).getDocumentId() == secondPostings.get(j).getDocumentId()) {
-//				//gather the positions of the phrase terms
-//				Posting newPosting = positionalMergePosting(firstPostings.get(i), secondPostings.get(j), distance);
-//				if (newPosting != null) {//if the phrase actually exists
-//					result.add(newPosting);//include it in merged list
-//				}
-//				i++;//iterate through in both lists
-//				j++;
-//				//first list docid is less than second lists docid
-//			} else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) {
-//				i++;//iterate first list
-//			} else {// second list docid is less than first lists docid
-//				j++;//iterate second list
-//			}
-//
-//		}
-//
-//		return result;
-//
-//	}
-//
-//	/**
-//	 * determine whether the first posting is some positional distance away from the second posting
-//	 * @param firstPosting doc id should match second term
-//	 * @param secondPosting doc id should match first term
-//	 * @param distance positional space between both terms
-//	 * @return valid postings based on positional distance
-//	 */
-//	private Posting positionalMergePosting(Posting firstPosting, Posting secondPosting, int distance) {
-//
-//		Posting posting = null;//postings that are considered a phrase
-//
-//		//positional indices
-//		int a = 0;
-//		int b = 0;
-//
-//		//iterate through position list of both terms, until one runs out
-//		while (a < firstPosting.getPostions().size() &&
-//				b < secondPosting.getPostions().size()) {
-//
-//			//check the different terms are in sequence
-//			//terms are in sequence
-//			if (firstPosting.getPostions().get(a) == (secondPosting.getPostions().get(b) - distance)) {
-//				if (posting == null) {
-//					posting = new Posting(firstPosting.getDocumentId(), firstPosting.getPostions());
-//					posting.addPosition(firstPosting.getPostions().get(a));
-//				} else {
-//					posting.addPosition(firstPosting.getPostions().get(a));
-//				}
-//				a++;
-//				b++;
-//				//first term is before the second
-//			} else if (firstPosting.getPostions().get(a) < (secondPosting.getPostions().get(b) - distance)) {
-//				a++;
-//				//second term is before the first
-//			} else {
-//				b++;
-//			}
-//
-//		}
-//
-//		return posting;
-//
-//	}
+    public List<Posting> merge(List<Posting> p1, List<Posting> p2, int p1_length, int p2_length, int k) {
+        List<Posting> results = new ArrayList<>();
+        List<Integer> positions1 = new ArrayList<>();
+        List<Integer> positions2 = new ArrayList<>();
+
+        int index1 = 0;
+        int index2 = 0;
+
+        while (index2 < p2_length && index1 < p1_length) {
+
+            positions1 = p1.get(index1).getPositions();
+            positions2 = p2.get(index2).getPositions();
+
+            int pos1 = 0;
+            int pos2 = 0;
+
+            if (p1.get(index1).getDocumentId() == p2.get(index2).getDocumentId()) {
+                while (pos1 < positions1.size() && pos2 < positions2.size()) {
+                    if (positions1.get(pos1) + k == positions2.get(pos2)) {
+                        if (results.isEmpty()) {
+                            Posting p = new Posting(p2.get(index2).getDocumentId(), positions2.get(pos2));
+                            results.add(p);
+                        }
+                        else if (results.get(results.size() - 1).getDocumentId() == p2.get(index2).getDocumentId()) {
+                            Posting p = results.get(results.size() - 1);
+                            p.addPosition(positions2.get(pos2));
+                        }
+                        else {
+                            Posting p = new Posting(p2.get(index2).getDocumentId(), positions2.get(pos2));
+                            results.add(p);
+                        }
+                        pos1++;
+                        pos2++;
+                        if (pos1 == positions1.size() || pos2 == positions2.size()) break;                        
+                    } 
+                    else if (positions1.get(pos1) < positions2.get(pos2)) {
+                        pos1++;
+                        if (pos1 == positions1.size()) break;                        
+                    } 
+                    else if (positions2.get(pos2) < positions1.get(pos1)) {
+                        pos2++;
+                        if (pos2 == positions2.size()) break;                       
+                    }
+                    else {
+                        pos1++;
+                        pos2++;
+                        if (pos1 == positions1.size() || pos2 == positions2.size()) break;
+                        
+                    }
+
+                }
+                
+                index1++;
+                index2++;
+
+            } else if (p1.get(index1).getDocumentId() < p2.get(index2).getDocumentId()) {
+                index1++;
+            } else if (p1.get(index1).getDocumentId() > p2.get(index2).getDocumentId()) {
+                index2++;
+            }
+        }
+        return results;
+    }
+        
+
 	
 	@Override
 	public String toString() {
-		//return "\"" + String.join(" ", mTerms) + "\"";
-		return "";
+            return "\"" + String.join(" ", mTerms) + "\"";
 	}
         
         @Override
