@@ -1,14 +1,14 @@
 package csulb;
 
-import cecs429.documents.DirectoryCorpus;
-import cecs429.documents.Document;
-import cecs429.documents.DocumentCorpus;
-import cecs429.indexes.Index;
-import cecs429.indexes.PositionalInvertedIndex;
-import cecs429.indexes.Posting;
-import cecs429.queries.BooleanQueryParser;
-import cecs429.text.AdvancedTokenProcessor;
-import cecs429.text.EnglishTokenStream;
+import java.cecs429.documents.DirectoryCorpus;
+import java.cecs429.documents.Document;
+import java.cecs429.documents.DocumentCorpus;
+import java.cecs429.indexes.Index;
+import java.cecs429.indexes.PositionalInvertedIndex;
+import java.cecs429.indexes.Posting;
+import java.cecs429.queries.BooleanQueryParser;
+import java.cecs429.text.AdvancedTokenProcessor;
+import java.cecs429.text.EnglishTokenStream;
 import java.cecs429.documents.DirectoryCorpus;
 import java.cecs429.documents.DocumentCorpus;
 import java.cecs429.indexes.Posting;
