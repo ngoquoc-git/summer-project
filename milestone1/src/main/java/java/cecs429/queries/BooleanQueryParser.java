@@ -185,4 +185,9 @@ public class BooleanQueryParser {
 		return new Literal(new StringBounds(startIndex, lengthOut),new TermLiteral(subquery.substring(startIndex, startIndex + lengthOut)));
 		
 	}
+        
+        
+        Boolean isPosstive(){
+            return true;
+        }
 }
