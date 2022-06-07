@@ -167,7 +167,7 @@ public class BooleanQueryParser {
 				}
 
 				// This is a phrase literal containing multiple terms.
-				return new Literal(new StringBounds(startIndex, lengthOut), new PhraseLiteral(terms));
+				return new Literal(new StringBounds(startIndex, lengthOut),new TermLiteral(subquery.substring(startIndex, startIndex + lengthOut)));
 
 			}
 
