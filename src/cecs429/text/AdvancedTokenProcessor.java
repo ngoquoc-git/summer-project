@@ -1,9 +1,10 @@
 package java.cecs429.text;
 
 import java.util.ArrayList;
-import snowball.ext.englishStemmer;
 
-public class AdvancedTokenProcessor implements TokenProcessor{
+import org.tartarus.snowball.ext.englishStemmer;
+
+public class AdvancedTokenProcessor implements java.cecs429.text.TokenProcessor {
     
     @Override
     public ArrayList<String> processToken(String token){

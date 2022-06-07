@@ -1,6 +1,6 @@
 // This file was generated automatically by the Snowball to Java compiler
 
-package snowball.ext;
+package org.tartarus.snowball.ext;
 
 import org.tartarus.snowball.Among;
 
@@ -71,7 +71,7 @@ private static final long serialVersionUID = 1L;
 
         private int I_x;
         private int I_p1;
-        private StringBuilder S_ch = new StringBuilder();
+        private java.lang.StringBuilder S_ch = new java.lang.StringBuilder();
 
                 private void copy_from(danishStemmer other) {
                     I_x = other.I_x;

@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * An EnglishTokenStream creates tokens by splitting on whitespace.
  */
-public class EnglishTokenStream implements TokenStream {
+public class EnglishTokenStream implements java.cecs429.text.TokenStream {
 	private Reader mReader;
 	
 	private class EnglishTokenIterator implements Iterator<String> {

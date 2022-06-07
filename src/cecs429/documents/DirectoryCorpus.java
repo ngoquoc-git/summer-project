@@ -1,5 +1,7 @@
 package java.cecs429.documents;
 
+import cecs429.documents.JsonFileDocument;
+
 import java.io.*;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -14,7 +16,7 @@ import java.util.function.Predicate;
 /**
  * A DirectoryCorpus represents a corpus found in a single directory on a local file system.
  */
-public class DirectoryCorpus implements DocumentCorpus {
+public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 	// The map from document ID to document.
 	private HashMap<Integer, Document> mDocuments;
 	

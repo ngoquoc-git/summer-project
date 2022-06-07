@@ -1,6 +1,6 @@
 // This file was generated automatically by the Snowball to Java compiler
 
-package snowball.ext;
+package org.tartarus.snowball.ext;
 
 import org.tartarus.snowball.Among;
 
@@ -142,7 +142,7 @@ private static final long serialVersionUID = 1L;
                 private static final char g_particle_end[] = {17, 97, 24, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 32 };
 
         private boolean B_ending_removed;
-        private StringBuilder S_x = new StringBuilder();
+        private java.lang.StringBuilder S_x = new java.lang.StringBuilder();
         private int I_p2;
         private int I_p1;
 

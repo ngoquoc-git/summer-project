@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="libstemmer_java">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../libstemmer_java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
