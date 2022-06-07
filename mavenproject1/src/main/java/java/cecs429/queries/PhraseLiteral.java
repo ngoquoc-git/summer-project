@@ -21,47 +21,47 @@ public class PhraseLiteral implements QueryComponent {
 	
 	@Override
 	public List<Posting> getPostings(Index index) {
-		return getPostingsPositions(index);
+            return getPostingsPositions(index);
 	}
 
-	@Override
-	public List<Posting> getPostingsPositions(Index index) {
-		List<Posting> result = new ArrayList<>();
-		
-		int distance = 1;//maintain the distance required between phrases
-
-		if (mTerms.size() < 2) {//one child denotes a term literal
-			if (mTerms.get(0) != null) {
-				result = mTerms.get(0).getPostingsPositions(index);
-			}
-		} else  {//multiple terms to merge
-
-			//verify that both terms appear at least in one document
-			if (mTerms.get(0).getPostingsPositions(index) != null &&
-				mTerms.get(1).getPostingsPositions(index) != null) {
-
-				//merge the first 2 terms postings together
-				result = andMergePosting(mTerms.get(0).getPostingsPositions(index),
-						mTerms.get(1).getPostingsPositions(index), distance);
-
-			}
-
-			//if there are more terms in the phrase, iterate through the rest of the term postings
-			for (int i = 2; i < mTerms.size(); i++) {
-
-				distance++;//increase the distance between terms
-				//verify the next posting appears in at least 1 document
-				if (mTerms.get(i).getPostingsPositions(index) != null) {
-					//merge previous result postings with new term postings
-					result = andMergePosting(result, mTerms.get(i).getPostingsPositions(index), distance);
-				}
-
-			}
-
-		}
-
-		return result;
-	}
+	
+//	public List<Posting> getPostingsPositions(Index index) {
+//		List<Posting> result = new ArrayList<>();
+//		
+//		int distance = 1;//maintain the distance required between phrases
+//
+//		if (mTerms.size() < 2) {//one child denotes a term literal
+//			if (mTerms.get(0) != null) {
+//				result = mTerms.get(0).getPostingsPositions(index);
+//			}
+//		} else  {//multiple terms to merge
+//
+//			//verify that both terms appear at least in one document
+//			if (mTerms.get(0).getPostingsPositions(index) != null &&
+//				mTerms.get(1).getPostingsPositions(index) != null) {
+//
+//				//merge the first 2 terms postings together
+//				result = andMergePosting(mTerms.get(0).getPostingsPositions(index),
+//						mTerms.get(1).getPostingsPositions(index), distance);
+//
+//			}
+//
+//			//if there are more terms in the phrase, iterate through the rest of the term postings
+//			for (int i = 2; i < mTerms.size(); i++) {
+//
+//				distance++;//increase the distance between terms
+//				//verify the next posting appears in at least 1 document
+//				if (mTerms.get(i).getPostingsPositions(index) != null) {
+//					//merge previous result postings with new term postings
+//					result = andMergePosting(result, mTerms.get(i).getPostingsPositions(index), distance);
+//				}
+//
+//			}
+//
+//		}
+//
+//		return result;
+//	}
 
 	/**
 	 * merge two postings lists together based on the ANDing the document id's, and that the first term is some

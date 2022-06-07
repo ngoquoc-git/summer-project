@@ -17,23 +17,20 @@ public class AndQuery implements QueryComponent {
 	public AndQuery(List<QueryComponent> components) {
 		mComponents = components;
 	}
-	@Override
-	public List<Posting> getPostingsPositions(Index index) {
-		return getPostings(index);
-	}
+//	@Override
+//	public List<Posting> getPostingsPositions(Index index) {
+//		return getPostings(index);
+//	}
 	
 	@Override
 	public List<Posting> getPostings(Index index) {
-		//List<Posting> result = null;
 		
 		// TODO: program the merge for an AndQuery, by gathering the postings of the composed QueryComponents and
 		// intersecting the resulting postings.
-		List<Posting> result = new ArrayList<Posting>();
-		result =mComponents.get(0).getPostings(index); // set pList to first element
+		List<Posting> result = new ArrayList<>();
+		if (mComponents.size() <= 1) return result;
 
-		if (mComponents.size() < 2) {//should be impossible to reach for and query
-			System.out.println("How did you get in the And Query?");
-		} {//if you only have to merge 2 postings
+                else {
 
 			//verify the both terms appear at least in one document
 			if (mComponents.get(0).getPostings(index) != null &&

@@ -13,7 +13,6 @@ public interface QueryComponent {
     /**
      * Retrieves a list of postings for the query component, using an Index as the source.
      */
-    List<Posting> getPostingsPositions(Index index);
+//    List<Posting> getPostingsPositions(Index index);
     List<Posting> getPostings(Index index);
-    //boolean isPositive(); 
 }

@@ -19,10 +19,10 @@ public class OrQuery implements QueryComponent {
 	public OrQuery(Collection<QueryComponent> components){
 		mComponents = new ArrayList<QueryComponent>(components);
 	}
-	@Override
-	public List<Posting> getPostingsPositions(Index index) {
-		return getPostings(index);
-	}
+//	@Override
+//	public List<Posting> getPostingsPositions(Index index) {
+//		return getPostings(index);
+//	}
 	@Override
 	public List<Posting> getPostings(Index index) {
 		List<Posting> result = new ArrayList<Posting>();//post list
