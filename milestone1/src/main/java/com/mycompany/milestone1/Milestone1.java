@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author holyshjt
- */
 public class Milestone1 {
 
     public static void main(String[] args) {
@@ -29,7 +25,8 @@ public class Milestone1 {
         dir = scan.nextLine();
         
         DocumentCorpus corpus = DirectoryCorpus.loadJsonDirectory(Paths.get(dir), ".json");
-        TokenProcessor = new AdvancedTokenProcessor();
+        long sTime = System.nanoTime();
+        
         
         
     }
