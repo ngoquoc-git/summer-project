@@ -96,7 +96,6 @@ public class PositionalInvertedIndex implements Index{
 	}
     @Override
 	public List<Posting> getPostingsPositions(String token) {
-		//process token for valid characters
 		AdvancedTokenProcessor processor = new AdvancedTokenProcessor();
 		String stemmed = processor.stemToken(token);
 		return map.get(stemmed);//index

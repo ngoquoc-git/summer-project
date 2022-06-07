@@ -15,4 +15,6 @@ public interface QueryComponent {
      */
 //    List<Posting> getPostingsPositions(Index index);
     List<Posting> getPostings(Index index);
+    
+    Boolean isPossitive();
 }
