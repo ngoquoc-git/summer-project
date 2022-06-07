@@ -17,82 +17,117 @@ public class AndQuery implements QueryComponent {
 	public AndQuery(List<QueryComponent> components) {
 		mComponents = components;
 	}
-//	@Override
-//	public List<Posting> getPostingsPositions(Index index) {
-//		return getPostings(index);
-//	}
 	
 	@Override
 	public List<Posting> getPostings(Index index) {
 		
-		// TODO: program the merge for an AndQuery, by gathering the postings of the composed QueryComponents and
-		// intersecting the resulting postings.
-		List<Posting> result = new ArrayList<>();
-		if (mComponents.size() <= 1) return result;
+            List<Posting> results = new ArrayList<>();
+            List<Posting> p0 = new ArrayList<>();
+            List<Posting> p1 = new ArrayList<>();
+           
+            int count = mComponents.size() - 1;
 
-                else {
+            //get postings for first 2 components and check if they are positive or negative
+            p0 = mComponents.get(0).getPostings(index);
+            p1 = mComponents.get(1).getPostings(index);
+            if (mComponents.get(0).isPossitive() == true && mComponents.get(1).isPossitive() == true) {
+                results = merge(p0, p1);
+            } else {
+                if (mComponents.get(0).isPossitive() == false) {
+                    results = mergeRev(p1, p0);
+                } else {
+                    results = mergeRev(p0, p1);
+                }
+            }
 
-			//verify the both terms appear at least in one document
-			if (mComponents.get(0).getPostings(index) != null &&
-					mComponents.get(1).getPostings(index) != null) {
-				//merge two postings together into result
-				result = andMergePosting(mComponents.get(0).getPostings(index), mComponents.get(1).getPostings(index));
-			}
+            count = count - 1;
+            int k = 2;
+            //get next posting and merge it with previous result.
+            while (count > 0) {
+                List<Posting> p2 = new ArrayList<>();
+                p2 = mComponents.get(k).getPostings(index);
+                if (mComponents.get(k).isPossitive() == true) {
+                    results = merge(results, p2);
+                } else {
+                    results = mergeRev(results, p2);
 
-			//iterate through the rest of the postings
-			for (int i = 2; i < mComponents.size(); i++) {
+                }
+                k++;
+                count--;
+        }
 
-				//verify the next posting appears in at least 1 document
-				if (mComponents.get(i).getPostings(index) != null) {
-					//merge previous result postings with new term postings
-					result = andMergePosting(mComponents.get(i).getPostings(index), result);
-				}
+        mComponents.clear();
 
-			}
-
-		}
-
-		return result;
+        return results;
 	}
 
-	/**
-	 * merge two postings lists together based on the ANDing the document id's
-	 * @param firstPostings first list of postings
-	 * @param secondPostings second list of postings
-	 * @return merged list of postings after ANDing the two postings together
-	 */
-	private List<Posting> andMergePosting(List<Posting> firstPostings, List<Posting> secondPostings) {
+	//Merge two postings using AND operation
+	private List<Posting> merge(List<Posting> firstPostings, List<Posting> secondPostings) {
 
-		List<Posting> result = new ArrayList<Posting>();
-
+		List<Posting> results = new ArrayList<Posting>();
+                
 		//starting indices for both postings lists
 		int i = 0;
 		int j = 0;
 
-		//iterate through both postings lists, end when one list has no more elements
 		while (i < firstPostings.size() && j < secondPostings.size()) {
-
-			//both lists have this document
 			if (firstPostings.get(i).getDocumentId() == secondPostings.get(j).getDocumentId()) {
-				result.add(firstPostings.get(i));//include it in merged list
-				i++;//iterate through in both lists
+				results.add(firstPostings.get(i));
+				i++;
 				j++;
-			//first list docid is less than second lists docid
-			} else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) {
-				i++;//iterate first list
-			} else {// second list docid is less than first lists docid
-				j++;//iterate second list
-			}
-
+			} 
+                        else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) i++;
+			else j++;
 		}
 
-		return result;
+		return results;
 	}
+        
+        private List<Posting> mergeRev(List<Posting> firstPostings, List<Posting> secondPostings){
+            List<Posting> results = new ArrayList<Posting>();
+                
+            //starting indices for both postings lists
+            int i = 0;
+            int j = 0;
+            
+            while (i < firstPostings.size()) {
+                if (firstPostings.get(i).getDocumentId() == secondPostings.get(j).getDocumentId()) {
+                    i++;
+                    j++;
+                    if (j == secondPostings.size()) {
+                        while (i < firstPostings.size()) {
+                            results.add(firstPostings.get(i));
+                            i++;
+                        }
+                    }
+                } 
+                else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) {
+                    results.add(firstPostings.get(i));
+                    i++;
+
+                } 
+                else {
+                    j++;
+                    if (j == secondPostings.size()) {
+                        while (i < firstPostings.size()) {
+                            results.add(firstPostings.get(i));
+                            i++;
+                        }
+                    }
+                } 
+            }
+            return results;
+        }
 	
 	@Override
 	public String toString() {
 		return
 		 String.join(" ", mComponents.stream().map(c -> c.toString()).collect(Collectors.toList()));
 	}
+        
+        @Override
+        public Boolean isPossitive(){
+            return true;
+        }
 	
 }

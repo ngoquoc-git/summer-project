@@ -13,80 +13,92 @@ import java.util.stream.Collectors;
  */
 public class OrQuery implements QueryComponent {
 	// The components of the Or query.
-	private List<QueryComponent> mComponents;//the children
+	private List<QueryComponent> mComponents;
 
-	//public OrQuery(List<QueryComponent> components) {
-	public OrQuery(Collection<QueryComponent> components){
-		mComponents = new ArrayList<QueryComponent>(components);
+	public OrQuery(List<QueryComponent> components){
+		mComponents = components;
 	}
-//	@Override
-//	public List<Posting> getPostingsPositions(Index index) {
-//		return getPostings(index);
-//	}
+
 	@Override
 	public List<Posting> getPostings(Index index) {
-		List<Posting> result = new ArrayList<Posting>();//post list
-		result = mComponents.get(0).getPostings(index);//Set posting list to first element
-		List<Posting> currList = new ArrayList<Posting>();
-		// TODO: program the merge for an OrQuery, by gathering the postings of the composed QueryComponents and
-		// unioning the resulting postings.
-		for(int i = 1; i< mComponents.size(); i++){
-				//verify the next posting appears in at least 1 document
-				QueryComponent component = mComponents.get(i);
-				List<Posting> posting = component.getPostings(index);
-				int size = posting.size();
-				if (mComponents.get(i).getPostings(index).size() != 0) {
-					result = orMerge(mComponents.get(i).getPostings(index), result);
-				}
-			}
-	
-			// Done: program the merge for an OrQuery, by gathering the postings of the composed Query children and
-			// unioning the resulting postings.
-	
-			return result;
-		}
-		private List<Posting> orMerge(List<Posting> firstPostings, List<Posting> secondPostings) {
+            List<Posting> results = new ArrayList<Posting>();
+            List<Posting> p0 = new ArrayList<>();
+            List<Posting> p1 = new ArrayList<>();
+            
+            p0 = mComponents.get(0).getPostings(index);
+            p1 = mComponents.get(1).getPostings(index);
+            results = merge(p0, p1);
+           
+            
+            for(int i = mComponents.size() - 1; i > 0; i--){
+                int n = 2;
+                List<Posting> temp = new ArrayList<>();
+                temp = mComponents.get(n).getPostings(index);
+                results = merge(results, temp);
+                n++;
+            }
+            return results;
+        }
+        private List<Posting> merge(List<Posting> firstPostings, List<Posting> secondPostings) {
 
-			List<Posting> result = new ArrayList<Posting>();
-	
-			//starting indices for both postings lists
-			int i = 0;
-			int j = 0;
-	
-			//iterate through both postings lists, end when one list has no more elements
-			while (i < firstPostings.size() && j < secondPostings.size()) {
-	
-				//both lists have this document
-				if (firstPostings.get(i).getDocumentId() == secondPostings.get(j).getDocumentId()) {
-					result.add(firstPostings.get(i));//include it in merged list
-					i++;//iterate through in both lists
-					j++;
-					//first list docid is less than second lists docid
-				} else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) {
-					result.add(firstPostings.get(i));
-					i++;//iterate first list
-				} else {// second list docid is less than first lists docid
-					result.add(secondPostings.get(j));
-					j++;//iterate second list
-				}
-	
-			}
-	
-			//include the rest of the first postings
-			while (i < firstPostings.size()) {
-				result.add(firstPostings.get(i));
-				i++;
-			}
-	
-			//include the rest of the second postings
-			while (j < secondPostings.size()) {
-				result.add(secondPostings.get(j));
-				j++;
-			}
-	
-			return result;
-	
-		}
+            List<Posting> result = new ArrayList<Posting>();
+
+            int i = 0;
+            int j = 0;
+
+            while (i < firstPostings.size() || j < secondPostings.size()) {
+                if (firstPostings.size() == 0) {
+                    while (j < secondPostings.size()) {
+                        result.add(secondPostings.get(j));
+                        j++;
+                    }
+                } 
+                else if (secondPostings.size() == 0) {
+                    while (i < firstPostings.size()) {
+                        result.add(firstPostings.get(i));
+                        i++;
+                    }
+                } 
+                else {
+                    if (firstPostings.get(i).getDocumentId() == secondPostings.get(j).getDocumentId()) {
+                        result.add(secondPostings.get(j));
+                        i++;
+                        j++;
+                        if (i == firstPostings.size()) {
+                            while (j < secondPostings.size()) {
+                                result.add(secondPostings.get(j));
+                                j++;
+                            }
+                        } else if (j == secondPostings.size()) {
+                            while (i < firstPostings.size()) {
+                                result.add(firstPostings.get(i));
+                                i++;
+                            }
+                        }
+                    } else if (firstPostings.get(i).getDocumentId() < secondPostings.get(j).getDocumentId()) {
+                        result.add(firstPostings.get(i));
+                        i++;
+                        if (i == firstPostings.size()) {
+                            while (j < secondPostings.size()) {
+                                result.add(secondPostings.get(j));
+                                j++;
+                            }
+                        }
+                    } else {
+                        result.add(secondPostings.get(j));
+                        j++;
+                        if (j == secondPostings.size()) {
+                            while (i < firstPostings.size()) {
+                                result.add(firstPostings.get(i));
+                                i++;
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        
 	@Override
 	public String toString() {
 		// Returns a string of the form "[SUBQUERY] + [SUBQUERY] + [SUBQUERY]...n"
@@ -94,5 +106,10 @@ public class OrQuery implements QueryComponent {
 		 String.join(" + ", mComponents.stream().map(c -> c.toString()).collect(Collectors.toList()))
 		 + " )";
 	}
+        
+        @Override
+        public Boolean isPossitive(){
+            return true;
+        }
 
 }
