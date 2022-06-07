@@ -66,8 +66,8 @@ public class JsonFileDocument implements FileDocument{
 	}
 
 	
-	public static FileDocument loadJsonFileDocument(int docID, Path path) {
-		return new JsonFileDocument(docID, path);
+	public static FileDocument loadJsonFileDocument(int documentID, Path pathFile) {
+		return new JsonFileDocument(documentID, pathFile);
 	}
 	
 }
