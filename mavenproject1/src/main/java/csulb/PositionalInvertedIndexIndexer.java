@@ -24,7 +24,8 @@ import java.util.Scanner;
     
 public class PositionalInvertedIndexIndexer {
         
-//    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+        System.out.println("Group 9");
 //        Index index;
 //        Scanner scan = new Scanner(System.in);
 //		System.out.println("What is the path of the directory you would like to index: ");
@@ -47,7 +48,7 @@ public class PositionalInvertedIndexIndexer {
 //            case "q":
 //                System.out.println("Shut down...");
 //                scan.close();
-//                return;//end program 
+//                return;//end program
 //            case "stem":
 //                AdvancedTokenProcessor processor = new AdvancedTokenProcessor();
 //                System.out.println(processor.processToken(scan.next()));
@@ -68,7 +69,7 @@ public class PositionalInvertedIndexIndexer {
 //                break;
 //            case "index":
 //                index = buildIndex(corpus,s);
-//                
+//
 //            default:
 //                //System.out.print("Enter optional query to AND: ");
 //                //query += scan.nextLine(); //The query becomes the the line entered
@@ -116,7 +117,7 @@ public class PositionalInvertedIndexIndexer {
 //        }
 //        private static Index indexCorpus(DocumentCorpus corpus) {
 //            //HashSet<String> vocabulary = new HashSet<>();
-//            AdvancedTokenProcessor processor = new AdvancedTokenProcessor();	
+//            AdvancedTokenProcessor processor = new AdvancedTokenProcessor();
 //            PositionalInvertedIndex  index = new PositionalInvertedIndex();
 //            // Get all the documents in the corpus by calling GetDocuments().
 //            Iterable<Document> documents = corpus.getDocuments();
@@ -129,7 +130,7 @@ public class PositionalInvertedIndexIndexer {
 //                    //String term = processor.processToken(token); //get 1 token at a time
 //                    wordList = processor.processToken(token);
 //                    //for (int i = 0; i < words.size(); i++) {
-//                    index.addTerm(wordList,d.getId(),position); //required because must know 
+//                    index.addTerm(wordList,d.getId(),position); //required because must know
 //                    position++;
 //                }
 //                try{
@@ -140,6 +141,6 @@ public class PositionalInvertedIndexIndexer {
 //            position = 0; //reset position
 //            }
 //            return index;
-//        }
+        }
     }
     
