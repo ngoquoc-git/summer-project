@@ -1,72 +1,73 @@
-package java.cecs429.indexes;
+package cecs429.indexes;
 
-import java.util.List;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.Collections;
+import java.util.*;
 
-public abstract class InvertedIndex implements Index{
 
-    /**
-	 * Constructs an empty index with given vocabulary set and corpus size.
-	 * @param vocabulary a collection of all terms in the corpus vocabulary.
-	 * @param corpuseSize the number of documents in the corpus.
-	 */
+public class InvertedIndex implements Index {
+    private HashMap<String, List<Posting>> mindex = new HashMap<>();
 
-    private HashMap<String, List<Posting>>map = new HashMap<String, List<Posting>>();
+    public void addTerm(String term, int docId) {
+        List<Posting> Plist = mindex.get(term);
+        //check if the index contains the term already.
+
+        if (mindex.containsKey(term)) {
+            //If it does! Check the last term.
+            if (Plist.get(Plist.size() - 1).getDocumentId() != docId) {
+                List<Posting> Plist2 = getPostings(term);
+
+                Posting newTerm = new Posting(docId, new ArrayList<Integer>());
+
+                Plist2.add(newTerm);
+                mindex.put(term, Plist2);
+
+            }else{
+                List<Posting> Plist2 = getPostings(term);
+                Posting p = Plist2.get(Plist2.size()-1);
+                //Add position p
+
+            }
+
+
+        }else{
+            //If the map does not contain the term.
+            //Then we add it.
+            List<Posting> Plist2 = new ArrayList<Posting>();
+            Posting newTerm = new Posting(docId, new ArrayList<Integer>());
+            Plist2.add(newTerm);
+            mindex.put(term, Plist2);
+
+
+    }
+
+    }
 
     @Override
-    public List<Posting> getPostings(String term){
-        //return list of postings in index
-        //KEY might not exist
-        if(map.containsKey(term)){
-            return map.get(term);
-        }
-        else{
+    public List<Posting> getPostings(String term) {
+        //Check if the index contains the term
+        // if it does! return the postings for the term
+        if(mindex.containsKey(term)){
+            return mindex.get(term);
+        }else{
+            // if not! return an empty postings.
             return new ArrayList<Posting>();
         }
+
     }
+
     @Override
-    public List<String> getVocabulary(){
-        //TODO Auto-generated method stub
-        //return lists of strings in vocabulary the keys of Hashmap
-        Set<String> keys = map.keySet();//not really a list, sort arraylist then return it
-        List<String> vocabulary = new ArrayList<String>();
-        for(String s: keys){
-            vocabulary.add(s);
-        }
-        Collections.sort(vocabulary);
-        return Collections.unmodifiableList(vocabulary);
-        //return null;
-    }
+    public List<String> getVocabulary() {
+     Set<String> Keys = mindex.keySet();
+     List<String> vocab = new ArrayList<String>();
+     for (String words : Keys){
+         vocab.add(words);
+         Collections.sort(vocab);
 
-    public void addTerm(String term, int docId){
-        //someone gives me "hello, docID 5"
-        List<Posting> exists = map.get(term);//exists is posting list
-        //exists.add(new Posting(docId)); //mutable list in HasMap is same List
-        //Check if it exists first, if a term shows up more than once dont add it again
-        // Hello -> 1 could show up 12 times.
-        //if exists it could already contain id in list
-        if(map.containsKey(term)){
-            if(exists.get(exists.size()-1).getDocumentId() != docId){ //if not the last document 
-                List<Posting> list = getPostings(term);
-                list.add(new Posting(docId,new ArrayList<Integer>()));
-                map.put(term,list);
-            }
-            else{
-                List<Posting> list = getPostings(term);
-                    Posting p = list.get(list.size() - 1);
-                    //p.addPosition(position);
-            }
+     }
+    return vocab;
 
-        }
-        else{
-            List<Posting> list = new ArrayList<Posting>();
-			//ArrayList<Integer> posList = new ArrayList<Integer>();
-			//posList.add(position);
-			list.add(new Posting(docId, new ArrayList<Integer>()));
-			map.put(term, list);
-        }
-    }
 }
+
+}
+
+
+

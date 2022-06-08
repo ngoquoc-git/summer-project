@@ -5,8 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dbf949a-9d69-4c3d-9b30-c6545369cb20" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/csulb/TermDocumentIndexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/documents/JsonFileDocument.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/documents/Document.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/documents/FileDocument.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/documents/FileDocumentFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/documents/TextFileDocument.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/indexes/Index.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/indexes/Posting.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/AndQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/BooleanQueryParser$Literal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/BooleanQueryParser$StringBounds.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/BooleanQueryParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/OrQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/PhraseLiteral.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/QueryComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/java/cecs429/queries/TermLiteral.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cecs429/documents/DirectoryCorpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/DirectoryCorpus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/DocumentCorpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/DocumentCorpus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/FileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/FileDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/FileDocumentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/FileDocumentFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cecs429/documents/JsonFileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/JsonFileDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/TextFileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/TextFileDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/Index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/InvertedIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/PositionalInvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/PositionalInvertedIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/Posting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/Posting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/TermDocumentIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/TermDocumentIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/AndQuery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/BooleanQueryParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/OrQuery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/PhraseLiteral.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/QueryComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/queries/TermLiteral.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/text/AdvancedTokenProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/text/BasicTokenProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/BasicTokenProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/text/EnglishTokenStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/EnglishTokenStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/text/TokenProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/TokenProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/text/TokenStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/TokenStream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +66,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AGcWS717rxfN6qW5gtlwr2G2yn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -35,21 +77,44 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="csulb" />
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="milestone1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="milestone1" />
+    <configuration name="TermDocumentIndexer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="csulb.TermDocumentIndexer" />
       <module name="milestione1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="milestione1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="milestione1" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.milestone1" />
+        <item itemvalue="Application.TermDocumentIndexer" />
       </list>
     </recent_temporary>
   </component>
@@ -74,5 +139,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

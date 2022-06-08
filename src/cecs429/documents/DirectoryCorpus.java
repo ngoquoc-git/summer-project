@@ -1,8 +1,6 @@
-package java.cecs429.documents;
+package cecs429.documents;
 
-import cecs429.documents.JsonFileDocument;
-
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +14,7 @@ import java.util.function.Predicate;
 /**
  * A DirectoryCorpus represents a corpus found in a single directory on a local file system.
  */
-public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
+public class DirectoryCorpus implements DocumentCorpus {
 	// The map from document ID to document.
 	private HashMap<Integer, Document> mDocuments;
 	
@@ -74,7 +72,6 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 		// First discover all the files in the directory that match the filter.
 		Files.walkFileTree(mDirectoryPath, new SimpleFileVisitor<Path>() {
 			
-                        @Override
 			public FileVisitResult preVisitDirectory(Path dir,
 			                                         BasicFileAttributes attrs) {
 				// make sure we only process the current working directory
@@ -84,7 +81,6 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 				return FileVisitResult.SKIP_SUBTREE;
 			}
 			
-                        @Override
 			public FileVisitResult visitFile(Path file,
 			                                 BasicFileAttributes attrs) {
 				String extension = getFileExtension(file);
@@ -95,7 +91,6 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 			}
 			
 			// don't throw exceptions if files are locked/other errors occur
-                        @Override
 			public FileVisitResult visitFileFailed(Path file,
 			                                       IOException e) {
 				return FileVisitResult.CONTINUE;
@@ -150,17 +145,11 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 	
 	/**
 	 * Constructs a corpus over a directory of simple text documents.
-	 * @param fileExtension The extension of the text documents to load.
+	 * @param fileExtension The extension of the text documents to load, e.g., ".txt".
 	 */
 	public static DirectoryCorpus loadTextDirectory(Path absolutePath, String fileExtension) {
 		DirectoryCorpus corpus = new DirectoryCorpus(absolutePath);
 		corpus.registerFileDocumentFactory(fileExtension, TextFileDocument::loadTextFileDocument);
-		return corpus;
-	}
-        public static DirectoryCorpus loadJsonDirectory(Path absolutePath, String fileExtension){
-
-		DirectoryCorpus corpus = new DirectoryCorpus(absolutePath);
-		corpus.registerFileDocumentFactory(".json", JsonFileDocument::loadJsonFileDocument);
 		return corpus;
 	}
 	public static DirectoryCorpus loadJsonDirectory(Path absolutePath, String fileExtension){
@@ -169,5 +158,4 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 		corpus.registerFileDocumentFactory(".json", JsonFileDocument::loadJsonFileDocument);
 		return corpus;
 	}
-
 }

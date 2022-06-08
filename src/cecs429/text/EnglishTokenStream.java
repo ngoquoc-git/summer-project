@@ -1,4 +1,4 @@
-package java.cecs429.text;
+package cecs429.text;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * An EnglishTokenStream creates tokens by splitting on whitespace.
  */
-public class EnglishTokenStream implements java.cecs429.text.TokenStream {
+public class EnglishTokenStream implements TokenStream {
 	private Reader mReader;
 	
 	private class EnglishTokenIterator implements Iterator<String> {
