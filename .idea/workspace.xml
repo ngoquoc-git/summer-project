@@ -5,34 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dbf949a-9d69-4c3d-9b30-c6545369cb20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/libstemmer_java.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/src.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/milestione1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/milestione1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/milestone1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cecs429/documents/DirectoryCorpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/DirectoryCorpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cecs429/text/AdvancedTokenProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/AdvancedTokenProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cecs429/text/EnglishTokenStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/EnglishTokenStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/Among.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/Among.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/SnowballProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/SnowballProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/SnowballStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/SnowballStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/TestApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/danishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/danishStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/dutchStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/dutchStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/englishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/englishStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/finnishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/finnishStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/frenchStemmer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/germanStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/germanStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/hungarianStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/hungarianStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/italianStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/italianStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/norwegianStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/norwegianStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/porterStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/porterStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/portugueseStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/portugueseStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/romanianStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/romanianStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/russianStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/russianStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/spanishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/spanishStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/swedishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/swedishStemmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snowball/ext/turkishStemmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snowball/ext/turkishStemmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cecs429/documents/JsonFileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/documents/JsonFileDocument.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

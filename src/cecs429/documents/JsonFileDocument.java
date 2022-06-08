@@ -1,12 +1,9 @@
 package cecs429.documents;
 
-import com.google.gson.*;
-import java.cecs429.documents.FileDocument;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
-import java.io.StringReader;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import com.google.gson.*;
 
 public class JsonFileDocument implements FileDocument{
 	private int docID;

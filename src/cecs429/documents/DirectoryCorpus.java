@@ -163,4 +163,11 @@ public class DirectoryCorpus implements java.cecs429.documents.DocumentCorpus {
 		corpus.registerFileDocumentFactory(".json", JsonFileDocument::loadJsonFileDocument);
 		return corpus;
 	}
+	public static DirectoryCorpus loadJsonDirectory(Path absolutePath, String fileExtension){
+
+		DirectoryCorpus corpus = new DirectoryCorpus(absolutePath);
+		corpus.registerFileDocumentFactory(".json", JsonFileDocument::loadJsonFileDocument);
+		return corpus;
+	}
+
 }
