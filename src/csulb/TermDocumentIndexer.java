@@ -1,5 +1,5 @@
 package csulb;
-
+/*
 import cecs429.documents.DirectoryCorpus;
 import cecs429.documents.Document;
 import cecs429.documents.DocumentCorpus;
@@ -57,3 +57,4 @@ public class TermDocumentIndexer {
 		return index;
 	}
 }
+ */

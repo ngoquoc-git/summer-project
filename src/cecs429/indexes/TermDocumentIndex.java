@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
 /**
  * Implements an Index using a term-document matrix. Requires knowing the full corpus vocabulary and number of documents
  * prior to construction.
@@ -13,7 +12,6 @@ public class TermDocumentIndex implements Index {
 	private final boolean[][] mMatrix;
 	private final List<String> mVocabulary;
 	private int mCorpusSize;
-	
 	/**
 	 * Constructs an empty index with with given vocabulary set and corpus size.
 	 * @param vocabulary a collection of all terms in the corpus vocabulary.
