@@ -12,8 +12,7 @@ public class Posting {
 	 * Constructs an empty posting with with given document ID and Posting List.
 	 * @param documentId document number.
 	 * @param post the position of a token in a document.
-	 */
-	public Posting(int documentId,ArrayList<Integer> post) {
+	 */public Posting(int documentId,ArrayList<Integer> post) {
 		mPosting = post;
 		mDocumentId = documentId;
 

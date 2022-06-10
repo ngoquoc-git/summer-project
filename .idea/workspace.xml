@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dbf949a-9d69-4c3d-9b30-c6545369cb20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/text/StandardTokenProcessor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/milestione1/csulb/PositionalInvertedIndexer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cecs429/queries/NotOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cecs429/text/StandardTokenProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/csulb/PositionalInvertedIndexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/milestione1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/milestione1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/PositionalInvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/PositionalInvertedIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/Posting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/Posting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/TermDocumentIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/TermDocumentIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/text/BasicTokenProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/text/BasicTokenProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/text/TokenProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/milestione1/cecs429/text/TokenProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/milestione1/csulb/TermDocumentIndexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/milestione1/cecs429/indexes/PositionalInvertedIndex.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/PositionalInvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/PositionalInvertedIndex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/Posting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/Posting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cecs429/indexes/TermDocumentIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/indexes/TermDocumentIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cecs429/text/BasicTokenProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/BasicTokenProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cecs429/text/TokenProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cecs429/text/TokenProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/csulb/TermDocumentIndexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/csulb/TermDocumentIndexer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
